@@ -28,7 +28,7 @@
     //使用方法一 (VC里直接使用)
     [self loadData];
     
-    //使用方法二 (二次封装，自己再封装一层到TGFApiExampleManager里)
+    //使用方法二 (二次封装，自己再封装一层到ApiManager里)
     [self loadData1];
     
     
@@ -84,8 +84,8 @@
 - (void)loadData1
 {
     //对MYApiManager进行二次封装，在自己的apiManager里可以自行处理异常或者数据等
-    [self.api excuteGetList:^(RequestObject *request, id result) {
-        
+    [self.api excuteGetList:^(MYApiRequestObject *request, id result) {
+        RequestObject *rq = (RequestObject *)request;
     }];
 }
 

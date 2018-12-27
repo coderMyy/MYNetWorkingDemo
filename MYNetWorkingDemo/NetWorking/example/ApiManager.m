@@ -25,6 +25,14 @@
         
         //可能我在这里做一些转模型，或者数据的处理，将数据转换成直接可用的。或者一些异常处理
         
+        //成功处理
+        if (response.successed) {
+            finish(request,response.data);
+            
+        //失败处理
+        }else{
+            
+        }
         
     } progress:nil];
 }

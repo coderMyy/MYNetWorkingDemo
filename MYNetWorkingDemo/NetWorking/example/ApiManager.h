@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class RequestObject;
+@class MYApiRequestObject;
 
-typedef void(^MYApiExampleFinished)(RequestObject *request,id result);
+typedef void(^MYApiExampleFinished)(MYApiRequestObject *request,id result);
 
 @interface ApiManager : NSObject
 
