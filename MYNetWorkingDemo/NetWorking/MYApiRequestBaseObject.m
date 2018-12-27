@@ -12,8 +12,8 @@
 
 @property (nonatomic, assign) NSInteger timeout;
 @property (nonatomic, copy) NSString *urlString;
-@property (nonatomic, copy) NSString *token;
-@property (nonatomic, copy) NSString *machine_type;
+@property (nonatomic, copy) NSString *token;//请求的基本参数,可自行更改
+@property (nonatomic, copy) NSString *machine_type;//请求的基本参数,可自行更改
 @property (nonatomic, assign) MY_APIREQUEST_TYPE requestType;
 @property (nonatomic, copy) NSString *requestTag;
 
@@ -46,17 +46,15 @@
 {
     if (self = [super init]) {
         
-//        if (User_is_login) {
-//            _token = [User sharedUser].userInfo.token;
-//        }
-        _machine_type = @"ios";
+        _token = @"获取的本地token";
+        _machine_type = @"iOS";
     }
     return self;
 }
 
-
+//忽略
 + (NSArray *)modelPropertyBlacklist {
-    return @[@"urlString", @"requestType",@"baseUrl",@"timeout"];
+    return @[@"urlString", @"requestType",@"baseUrl",@"timeout",@"localCache",@"task"];
 }
 
 - (NSString *)description
