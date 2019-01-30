@@ -20,8 +20,13 @@
         response = [self new];
     }
     NSInteger httpCode = [[task.response valueForKey:@"statusCode"] integerValue];
-    if (error) {
-        response.tipMsg = @"网络错误";
+    response.httpCode = httpCode;
+    if (httpCode != 200) { //取消请求
+        if (error.code == -999) {
+            response.tipMsg = @"";
+        }else{
+            response.tipMsg = @"网络错误";
+        }
         response.errorDesc = error.localizedDescription;
     }else{
         if (response.code) {

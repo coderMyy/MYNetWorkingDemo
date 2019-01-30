@@ -31,8 +31,9 @@ static MYNetWorkingTool *baseNetWork;
 {
     if (!_manager) {
         AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
-        sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-        [sessionManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//        sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+        sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+//        [sessionManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         sessionManager.responseSerializer = responseSerializer;
         [sessionManager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

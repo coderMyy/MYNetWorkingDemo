@@ -28,12 +28,10 @@
 
 - (instancetype)initWithRequest:(MY_APIREQUEST_TYPE)requestType urlString:(NSString *)urlString timeout:(NSInteger)timeout requestTag:(NSString *)tag
 {
-#ifdef DEBUG
+    //requestTag可以不设定，每次均为不同的请求,此时requestTag为当前时间戳
     if (!tag.length) {
-//        HudShowMessage(@"tag必须设定",[UIApplication sharedApplication].keyWindow, 2);
-        return nil;
+        tag = MYGetCurrentTime();
     }
-#endif
     MYApiRequestBaseObject *request = [self init];
     request.urlString = urlString;
     request.requestType = requestType;
@@ -42,24 +40,15 @@
     return request;
 }
 
-- (instancetype)init
-{
-    if (self = [super init]) {
-        
-        _token = @"获取的本地token";
-        _machine_type = @"iOS";
-    }
-    return self;
-}
 
-//忽略
+
 + (NSArray *)modelPropertyBlacklist {
-    return @[@"urlString", @"requestType",@"baseUrl",@"timeout",@"localCache",@"task"];
+    return @[@"urlString", @"requestType",@"baseUrl",@"timeout",@"task",@"requestTag",@"localCache"];
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"baseUrl ************* %@\n请求方式 ************* %ld\n完整url ************* %@\n设置超时时间 ************* %ld",self.baseUrl,(long)self.requestType,self.task.originalRequest.URL.absoluteString,(long)self.timeout];
+    return [NSString stringWithFormat:@"baseUrl ************* %@\n请求方式 ************* %ld\n完整url ************* %@\n设置超时时间 ************* %ld\n请求参数 ************* %@",self.baseUrl,(long)self.requestType,self.task.originalRequest.URL.absoluteString,(long)self.timeout,self.yy_modelToJSONObject];
 }
 
 - (NSInteger)timeout
@@ -89,6 +78,12 @@
 - (NSString *)urlString
 {
     return _urlString;
+}
+
+//获取当前时间戳
+NS_INLINE NSString *MYGetCurrentTime() {
+    UInt64 recordTime = [[NSDate date] timeIntervalSince1970];
+    return [NSString stringWithFormat:@"%llu",recordTime];
 }
 
 @end

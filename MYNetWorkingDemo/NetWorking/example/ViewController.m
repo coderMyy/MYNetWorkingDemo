@@ -33,7 +33,8 @@
     
     
     
-    //注： 代理式 和block各有优缺点 。代理式，请求结果可以统一在代理方法中处理，block则各个请求处理方式相对独立。
+    //注： 代理式 和block各有优缺点 。代理式，请求结果可以统一在代理方法中处理，block则各个请求处理方式相对独立.
+    //项目开始时，请开启网络监听 [GLobalRealReachability startNotifier]
     
     //使用方式：1.creatRequest方法创建一个继承于 MYApiRequestObject 的请求实例，并自行设定需要的参数属性  2.引用MYApiManager对象 ，excuteRequest执行请求 。3. 通过代理或者block方式，进行处理请求结果。
     
